@@ -1,9 +1,16 @@
 {
-  "name": "group-buying-mvp",
+  "name": "group-buying-api",
   "version": "0.1.0",
   "private": true,
+  "type": "module",
   "scripts": {
-    "setup": "npm --prefix api install && npm --prefix web install",
-    "dev": "node -e \"console.log('Starting API on 4000 and Web on 3000\u2026')\" && (npm --prefix api run dev &) && (npm --prefix web run dev &) && wait"
+    "dev": "node --watch src/server.js",
+    "start": "node src/server.js"
+  },
+  "dependencies": {
+    "express": "^4.19.2",
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.5",
+    "uuid": "^9.0.1"
   }
 }
