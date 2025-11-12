@@ -1,0 +1,12 @@
+import 'dotenv/config';
+import express from 'express';
+import cors from 'cors';
+import dealsRouter from './routes/deals.js';
+import ordersRouter from './routes/orders.js';
+import { settleDeal } from './routes/settle.js';
+const app = express(); app.use(cors()); app.use(express.json());
+app.get('/', (_,res)=>res.json({ok:true}));
+app.use('/deals', dealsRouter);
+app.use('/orders', ordersRouter);
+app.post('/jobs/settle-deal/:id', settleDeal);
+const PORT = process.env.PORT||4000; app.listen(PORT, ()=>console.log(`API listening on http://localhost:${PORT}`));
